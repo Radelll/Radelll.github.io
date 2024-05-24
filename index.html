@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bronirovanie228</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="main">
+        <h1>Бронирование стола</h1>
+        <img src="https://png.pngtree.com/png-vector/20221227/ourlarge/pngtree-table-reservation-png-image_6540032.png">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta iusto natus eum illo blanditiis sed repellendus nulla unde. Amet ab ex pariatur iure nihil inventore magnam suscipit dolores enim error.</p>
+        <button id="buy">Бронировать</button>
+    </div>
+    <form id="form">
+        <h1>Оформление стола</h1>
+        <input type="text" placeholder="Имя" id="user_name">
+        <input type="text" placeholder="Email" id="user_email">
+        <input type="text" placeholder="Телефон" id="user_phone">
+        <button type="submit" id="order">Оформить</button>
+    </form>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        let tg = window.Telegram.Webapp;
+        let buy = document.getElementById('buy');
+        let order = document.getElementById('order');   
+
+        buy.addEventListener('click', () => {
+            document.getElementById('main').style.display = "none";
+            document.getElementById('form').style.display = "block";
+            document.getElementById('user_name').value = tg.InitDataUnsafe.user.first_name + " " + tg.InitDataUnsafe.user.last_name;
+        })
+        
+        order.addEventListener('click', () => {
+            tg.close();
+        })
+
+    </script>
+</body>
+</html>
