@@ -38,8 +38,23 @@
         
         order.addEventListener('submit', (event) => {
             event.preventDefault();
-            // Здесь можно добавить логику для отправки данных формы
-            tg.close();
+            let name = document.getElementById('user_name').value;
+            let email = document.getElementById('user_email').value;
+            let phone = document.getElementById('user_phone').value;
+
+            fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({name: name, email: email, phone: phone})
+            }).then(response => {
+                if (response.ok) {
+                    tg.close();
+                } else {
+                    alert('Ошибка при отправке данных');
+                }
+            });
         });
     </script>
 </body>
